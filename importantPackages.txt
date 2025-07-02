@@ -1,0 +1,5 @@
+bcryptjs
+aggregate-paginant
+express
+jwt
+prettier
