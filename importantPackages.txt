@@ -3,3 +3,6 @@ aggregate-paginant
 express
 jwt
 prettier
+multer
+cloudnary
+till multer we have only done set up
