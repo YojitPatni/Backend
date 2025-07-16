@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     },
 
     fullname:{
-        type:Number,
+        type:String,
         required:true,
         trim:true,
         index:true
@@ -55,10 +55,10 @@ const userSchema = new mongoose.Schema({
 },{timestamps:true})
 
 userSchema.pre("save",async function(next) {//to en
-   if(!this.password.isModified("password")) {
+   if(!this.isModified("password")) {
     return next()
 }
-     this.password=bcrypt.hash(this.password,10)
+     this.password=await bcrypt.hash(this.password,10)
     next()
 })
 
@@ -67,7 +67,7 @@ userSchema.methods.isPasswordCorrect = async function(password) {
 }
 
 userSchema.methods.generateRefreshToken = function(password) {
-    jwt.sign({
+    return jwt.sign({
         _id:this._id,
         email:this.email,
         fullname:this.fullname
@@ -81,7 +81,7 @@ userSchema.methods.generateRefreshToken = function(password) {
 }
 
 userSchema.methods.generateAccessToken = function(password) {
-    jwt.sign({
+    return jwt.sign({
         _id:this._id,
         email:this.email,
         fullname:this.fullname
