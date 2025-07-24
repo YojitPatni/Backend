@@ -5,14 +5,16 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 
 const userSchema = new mongoose.Schema({
-    id:{
-        type:Number,
-        required:true,
-        unique:true,
-        lowercase:true,
-        trim:true,
-        index:true
-    },
+    
+
+    username: {
+            type: String,
+            required: true,
+            unique: true,
+            lowercase: true,
+            trim: true, 
+            index: true
+        },
 
     email:{
         type:String,
@@ -35,8 +37,7 @@ const userSchema = new mongoose.Schema({
     },
 
     coverImage:{
-        type:String,
-        required:true,
+        type:String
     },
 
     watchHistory:[{
