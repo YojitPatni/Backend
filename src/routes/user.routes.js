@@ -45,7 +45,7 @@ router.route("/change-password").post(verifyJWT,changeCurruntPassword)
 
 router.route("/currunt-user").get(verifyJWT,getCurruntUser)
 
-router.route("update-account-details").patch(updateAccountDetail)
+router.route("/update-account-details").patch(updateAccountDetail)
 
 router.route("/avatar").patch(verifyJWT,upload.single("avatar"),updateAvatar)
 
